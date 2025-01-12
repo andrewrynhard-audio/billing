@@ -1,0 +1,317 @@
+/* App.css */
+
+/* 1) Importing Fira Sans and Fira Code if needed. */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Fira+Code:wght@400;700&display=swap');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(27, 38, 54, 1);
+    font-family: "Fira Sans", sans-serif;
+    /* Primary font */
+    color: #ffffff;
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* #App is your top-level container. Make it a flex container. */
+#App {
+    display: flex;
+    height: 100vh;
+    /* Because our sidebar is on the left, main content on the right. */
+}
+
+/* SIDEBAR STYLES */
+.sidebar {
+    background-color: #1b2636;
+    /* match the background or slightly darker/lighter */
+    padding: 1em;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    /* spacing between buttons */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar button {
+    background-color: #007bff;
+    /* consistent with the circle’s color from snippet */
+    color: #ffffff;
+    border: none;
+    padding: 0.75em 1em;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: "Fira Code", monospace;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+    background-color: #0056b3;
+}
+
+
+.refresh-button {
+    margin-top: auto;
+    /* pushes this button to bottom */
+    align-self: center;
+    /* optional: horizontally center the icon */
+}
+
+/* MAIN CONTENT STYLES */
+.main-content {
+    flex: 1;
+    background-color: #f0f0f0;
+    /* Lighter area for forms/tables */
+    padding: 1em 2em;
+    overflow: auto;
+    color: #333;
+    /* Dark text for better contrast on the light background */
+    font-family: "Fira Code", monospace;
+}
+
+/* HEADERS */
+h3,
+h4 {
+    font-family: "Fira Sans", sans-serif;
+    color: #007bff;
+    margin-top: 1em;
+}
+
+/* A small loading indicator area */
+.loading-indicator {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.spinner {
+    margin: 1em auto;
+    width: 32px;
+    height: 32px;
+    border: 4px solid #ccc;
+    border-left-color: #007bff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* FORMS (like CustomerForm, InvoiceView) */
+form,
+.invoice-form {
+    background-color: #ffffff;
+    color: #333;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label,
+.invoice-form label {
+    display: inline-block;
+    margin-bottom: 0.25em;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+.invoice-form input[type="text"],
+.invoice-form input[type="email"],
+.invoice-form input[type="number"],
+.invoice-form select,
+form select {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: "Fira Code", monospace;
+}
+
+form button,
+.invoice-form button {
+    margin-right: 1em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75em 1em;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover,
+.invoice-form button:hover {
+    background-color: #0056b3;
+}
+
+/* TYPICAL TABLE STYLES (for your CustomersView list, if you use <table>) */
+.table-container {
+    margin-top: 1em;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    font-family: "Fira Code", monospace;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    color: #333;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* A simpler UL-based “list of customers” style if you prefer a list approach. */
+ul.customer-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul.customer-list li {
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 0.5em;
+    padding: 0.75em;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* Simple hover effect on list items */
+ul.customer-list li:hover {
+    background-color: #f5f5f5;
+}
+
+/* Because you have a Cancel button, align it similarly. */
+.invoice-form .cancel-button {
+    background-color: #999;
+}
+
+.invoice-form .cancel-button:hover {
+    background-color: #666;
+}
+
+
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ccc;
+    border-top-color: #3f51b5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* The outer container for CustomersView */
+.customers-view {
+    position: relative;
+    /* so the absolute-positioned button is anchored here */
+    background-color: #ffffff;
+    /* example, or remove if you have other styling */
+    color: #333;
+    padding: 1em;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* The "Add Customer" button styled similarly to the refresh button */
+.add-customer-button {
+    position: absolute;
+    bottom: 20px;
+    /* distance from bottom edge of .customers-view */
+    right: 20px;
+    /* distance from right edge of .customers-view */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.75em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #555;
+    /* Default icon color */
+    font-size: 1.2rem;
+    /* a bit bigger for the icon */
+}
+
+/* Hover states */
+.add-customer-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #007bff;
+    /* match your brand color or refresh button color */
+}
+
+/* If you want the icon slightly bigger, you can also do this: */
+.add-customer-button .fa-plus {
+    font-size: 1.3rem;
+}
+
+.close-form-button {
+    /* Similar to your .refresh-button or .add-customer-button */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.75em;
+    border-radius: 4px;
+    color: #555;
+    /* Default icon color */
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Optional: If you want it in the top right corner of a container */
+.close-form-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.close-form-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #007bff;
+    /* brand color on hover */
+}
+
+.titles-scrollable {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.5em;
+}
